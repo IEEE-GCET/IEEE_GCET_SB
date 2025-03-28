@@ -1,0 +1,43 @@
+/* Carousel Container */
+.carousel-container {
+  z-index: 20;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .slick-slide {
+    transition: transform 0.5s ease; /* Smooth sliding transition */
+  }
+  
+  .slick-prev,
+  .slick-next {
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .slick-prev:hover,
+  .slick-next:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Hover effect for arrows */
+  }
+  
+  /* Responsive Carousel */
+  @media (max-width: 768px) {
+    .carousel-container {
+      padding: 0 1rem;
+    }
+    .slick-prev, .slick-next {
+      font-size: 1.5rem;
+    }
+  }
+  

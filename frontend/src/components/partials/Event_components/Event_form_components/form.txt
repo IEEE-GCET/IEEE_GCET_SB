@@ -1,0 +1,67 @@
+import React, { useState } from 'react';
+import FormContainer from './FormContainer';
+import BasicInfoForm from './BasicInfoForm';
+import DignitariesForm from './DignitariesForm';
+import CoordinatorsForm from './CoordinatorsForm';
+import AffiliationsForm from './AffiliationsForm';
+import DescriptionForm from './DescriptionForm';
+import ImagesForm from './ImagesForm';
+import WinnersForm from './WinnersForm';
+import DocumentsForm from './DocumentsForm';
+
+const EventFormWrapper = () => {
+  // State for aggregating data from all form sections
+  const [formData, setFormData] = useState({
+    basicInfo: {},        // title, organizedBy, venue, etc.
+    dignitaries: {},      // guests & resource_person arrays
+    coordinators: {},     // faculty & students arrays
+    affiliations: {},     // affiliations array and collaborated_societies
+    description: {},      // introduction, sections (with subsections), conclusion
+    images: {},           // cover image and gallery images
+    winners: {},          // winners array
+    documents: {},        // document details (name, description, link)
+    collaboration: false, // collaboration flag (boolean)
+    // Note: Fields like `editedBy` and `uploadedBy` are often set automatically.
+  });
+
+  // Handler to update a particular section's data
+  const handleSectionChange = (sectionName, sectionData) => {
+    setFormData(prevData => ({
+      ...prevData,
+      [sectionName]: sectionData,
+    }));
+  };
+
+  // Final submission of aggregated form data
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Submitting aggregated event data:', formData);
+    // Here you can perform your API call to submit the formData to your backend.
+  };
+
+  return (
+    <FormContainer title="Create Event">
+      {/* Each section component sends its data upward via onDataChange */}
+      <BasicInfoForm onDataChange={(data) => handleSectionChange('basicInfo', data)} />
+      <DignitariesForm onDataChange={(data) => handleSectionChange('dignitaries', data)} />
+      <CoordinatorsForm onDataChange={(data) => handleSectionChange('coordinators', data)} />
+      <AffiliationsForm onDataChange={(data) => handleSectionChange('affiliations', data)} />
+      <DescriptionForm onDataChange={(data) => handleSectionChange('description', data)} />
+      <ImagesForm onDataChange={(data) => handleSectionChange('images', data)} />
+      <WinnersForm onDataChange={(data) => handleSectionChange('winners', data)} />
+      <DocumentsForm onDataChange={(data) => handleSectionChange('documents', data)} />
+
+      {/* Submit button to send the aggregated data */}
+      <div className="mt-8 flex justify-end">
+        <button
+          onClick={handleSubmit}
+          className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+        >
+          Submit Event
+        </button>
+      </div>
+    </FormContainer>
+  );
+};
+
+export default EventFormWrapper;

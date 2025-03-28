@@ -1,0 +1,51 @@
+/* Testimonial Card Styles with Hover Animations */
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px); /* Lift effect */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.testimonial-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover img {
+  transform: scale(1.1); /* Zoom in effect on image */
+}
+
+.testimonial-card p {
+  font-size: 1rem;
+  color: #4a4a4a;
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.testimonial-card:hover p {
+  color: #009ca6; /* Change text color on hover */
+}
+
+.testimonial-card h4 {
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.testimonial-card .text-gray-500 {
+  color: #777;
+}

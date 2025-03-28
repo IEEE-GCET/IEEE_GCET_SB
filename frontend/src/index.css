@@ -1,0 +1,97 @@
+/* Inter font family */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #9f9f9f2a;
+    color: #00629b;
+    font-family: 'Inter', sans-serif;
+}
+.navbar{
+    background-color: #fff;
+}
+
+@layer components{
+    .sub-menu{
+        position:absolute;
+        margin-top: 0.5rem;
+        padding: 15px;
+        border-radius: 6px;
+        transform-origin: 50% -170px;
+        --tw-backdrop-blur: blur(8px);
+    -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+    backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+    background-color: rgb(255 255 255 / 0.04);
+    }
+}
+
+@layer utilities{
+    .flex-center{
+        display: flex;
+        align-items: center;
+    }
+    .flex-center-between{
+        display: flex;
+        align-items: center;
+        justify-content:space-between;
+    }
+}
+
+/* Add this CSS to ensure responsive styling */
+/* Additional Custom CSS (Optional) */
+.slick-prev, .slick-next {
+    background-color: #009ca6;
+    border-radius: 50%;
+  }
+  
+  .slick-prev:before, .slick-next:before {
+    color: white;
+  }
+  
+  .slick-slide {  
+    display: flex !important; /* Ensure all slides use flexbox */  
+    justify-content: center !important; /* Center horizontally */  
+    align-items: center; /* Center vertically */  
+  }  
+  
+  .slick-list {  
+    display: flex;  
+    justify-content: center;  
+  }
+  .keen-slider:not([data-keen-slider-disabled]) {
+
+    -webkit-tap-highlight-color: transparent;
+    align-content: flex-start;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -khtml-user-select: none;
+    width: 100%
+}
+
+.keen-slider:not([data-keen-slider-disabled]) .keen-slider__slide {
+    min-height: 100%;
+    overflow: hidden;
+    position: relative;
+    width: 100%
+}
+
+.keen-slider:not([data-keen-slider-disabled])[data-keen-slider-reverse] {
+    flex-direction: row-reverse
+}
+
+.keen-slider:not([data-keen-slider-disabled])[data-keen-slider-v] {
+    flex-wrap: wrap
+}
