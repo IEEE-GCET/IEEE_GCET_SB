@@ -37,7 +37,7 @@ const Testimonial = () => {
               connect with brilliant minds.
             </em>
             <span className="text-4xl mt-5 text-[#00629B]">“</span>
-            <p className="mt-4 font-semibold">John Doe – Chairman</p>
+            <p className="mt-4 font-semibold">Ms. S.Jyothirmaye – IEEE-SB Counsellor GCET</p>
           </motion.div>
         </div>
       </motion.div>

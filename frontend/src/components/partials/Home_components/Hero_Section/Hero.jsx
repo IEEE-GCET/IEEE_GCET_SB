@@ -22,7 +22,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          Transforming Ideas into Reality with Cutting-Edge Technology.
+"Empowering Innovation, Inspiring Change with IEEE GCET."
         </motion.h1>
 
         {/* Subtext */}
@@ -33,7 +33,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
         >
-          We innovate, build, and create solutions that redefine the future. Join us in our journey to explore limitless possibilities.
+         We nurture young minds to lead with technology, research, and collaboration. Join us in shaping a smarter, sustainable, and inclusive future.
         </motion.p>
 
         {/* Call-to-Action (CTA) Buttons */}

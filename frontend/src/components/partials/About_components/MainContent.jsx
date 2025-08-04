@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import React from 'react'
+import sample from "./sb.jpeg";
 
 const MainContent = () => {
   return (
@@ -14,6 +15,8 @@ const MainContent = () => {
             IEEE GCET Student Branch
           </h2>
           <div className="w-16 h-1 bg-[#00629B] mt-4"></div>
+          <img src={sample} alt="" />
+
         </motion.div>
 
         {/* Right Column - Description */}

@@ -16,16 +16,18 @@ const Slogan = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
         >
-          <span className="text-6xl">"</span>
+          <span className="text-5xl">"</span>
           <motion.h1
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.6 }}
            className="mt-5">
-            Innovation is seeing what everybody has seen and thinking what
-            nobody has thought.
+            <p className="text-3xl sm:text-4xl font-bold text-gray-900 leading-relaxed">
+    <span className="block mb-2">“ Dream, dream, dream. ”</span>
+    <span className="block">Dreams transform into thoughts and thoughts result in action.”</span>
+  </p>
           </motion.h1>
-          <span className="text-6xl">"</span>
+          <span className="text-5xl">"</span>
         </motion.div>
 
         <motion.p
@@ -33,7 +35,7 @@ const Slogan = () => {
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.6 }}>
-          — Dr. Albert Szent-Györgyi
+          — Dr. A.P.J. Abdul Kalam
         </motion.p>
       </motion.div>
     </section>

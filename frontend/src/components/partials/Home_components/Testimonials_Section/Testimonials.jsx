@@ -6,25 +6,25 @@ const Testimonials = () => {
   const testimonials = [
     {
       // imgSrc: 'https://via.placeholder.com/100',
-      name: 'John Doe',
-      role: 'CEO',
-      company: 'Company X',
-      feedback: 'This service helped us streamline our processes and increased efficiency. Highly recommend!',
+      name: 'Sathwick Reddy',
+      role: 'CSE-AIML',
+      company: 'SSIT',
+      feedback: 'Being part of the IEEE GCET Student Branch has completely changed how I view technology and teamwork. Every event inspires me to do more',
     },
     {
       // imgSrc: 'https://via.placeholder.com/100',
-      name: 'Jane Smith',
-      role: 'CTO',
-      company: 'Tech Co.',
-      feedback: 'Amazing team! Their support and innovation have helped us grow significantly.',
+      name: 'Ch.Shashank',
+      role: 'CSE',
+      company: 'CS',
+      feedback: 'From hands-on workshops to real-world projects, IEEE at GCET gave me the confidence to take on industry challenges.',
     },
-    {
-      // imgSrc: 'https://via.placeholder.com/100',
-      name: 'Michael Johnson',
-      role: 'Founder',
-      company: 'StartUp Y',
-      feedback: 'Incredible experience working with this company. They truly care about our success.',
-    },
+    // {
+    //   // imgSrc: 'https://via.placeholder.com/100',
+    //   name: 'Michael Johnson',
+    //   role: 'Founder',
+    //   company: 'StartUp Y',
+    //   feedback: 'Incredible experience working with this company. They truly care about our success.',
+    // },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);

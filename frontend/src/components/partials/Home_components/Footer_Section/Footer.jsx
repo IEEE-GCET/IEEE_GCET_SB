@@ -12,7 +12,7 @@ const Footer = () => {
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}>
-          <h2 className="text-3xl font-bold">YourBrand</h2>
+          <h2 className="text-3xl font-bold">IEEE GCET SB</h2>
           <p className="text-sm opacity-90 mt-2">
             © {new Date().getFullYear()} All Rights Reserved.
           </p>
@@ -97,7 +97,7 @@ const Footer = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.8 }}>
-        <p>Contact Us: ieeegcetsb@ieee.org | +91 90309 07634</p>
+        <p>Contact Us: ieeesb@gcet.edu.in | +91 90309 07634</p>
       </motion.div>
     </footer>
   );

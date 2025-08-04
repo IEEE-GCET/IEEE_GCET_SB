@@ -21,7 +21,7 @@ const Hero2 = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            Transforming Ideas into Reality with Cutting-Edge Technology.
+            Empowering Innovation, Inspiring Change with IEEE GCET.
             <div className="py-3">
               <ReactTyped
                 className=""
@@ -50,8 +50,7 @@ const Hero2 = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
           >
-            We innovate, build, and create solutions that redefine the future.
-            Join us in our journey to explore limitless possibilities.
+            We nurture young minds to lead with technology, research, and collaboration. Join us in shaping a smarter, sustainable, and inclusive future.
           </motion.p>
 
           {/* Call-to-Action (CTA) Buttons */}
@@ -86,7 +85,7 @@ const Hero2 = () => {
              {[
                           { icon: <FaFacebook  />, link: "#",name:"Facebook" },
                           { icon: <FaTwitter />, link: "#",name:"Twitter" },
-                          { icon: <FaInstagram size={20} />, link: "#",name:"Instagram" },
+                          { icon: <FaInstagram size={20} />, link: "https://www.instagram.com/ieee_gcetsb/",name:"Instagram" },
                           { icon: <FaLinkedin size={20} />, link: "#",name:"LinkedIn" },
                           // { icon: <FaGithub size={20} />, link: "#",name:"Git Hub" },
                           // { icon: <FaYoutube size={20} />, link: "#",name:"Youtube" },
@@ -94,12 +93,17 @@ const Hero2 = () => {
                           <motion.a
                             key={index}
                             href={social.link}
+                            // rohit -updated link (new tab)
+                             target="_blank"
+                            rel="noopener noreferrer"
                             className=" rounded-full flex justify-center items-center gap-2  text-[#00629B] hover:bg-opacity-80 transition"
                             whileHover={{ scale: 1.2 }}
                           >
                             <div className="bg-white  rounded-full inline-block p-1 " >{social.icon}</div> <span className="text-sm text-white">{social.name}</span>
                           </motion.a>
                         ))}
+
+
             {/* <a href="#" className="sm:text-xl gap-2 flex flex-between text-sm hover:text-[#009ca6]">
               <FaFacebook/> <span className="hover:border-b hover:border-[#009ca6]" >LinkedIn</span>
             </a>
