@@ -5,6 +5,7 @@ import axios from "axios";
 import { toast } from "sonner";
 import EventCard from "./EventCard";
 import { setAllEvents } from "@/features/eventSlice";
+import { API_ENDPOINTS } from "@/utils/api";
 
 const Event = () => {
   const [events, setEvents] = useState([]);
@@ -16,7 +17,7 @@ const Event = () => {
     const fetchEvents = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/ieeegcetsb/event/all",
+          API_ENDPOINTS.EVENT_ALL,
           {
             headers: { "Content-Type": "application/json" },
             withCredentials: true,

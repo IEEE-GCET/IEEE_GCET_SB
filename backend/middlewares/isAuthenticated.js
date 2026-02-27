@@ -11,7 +11,7 @@ export const isAuthenticated = (req, res, next) => {
         }
 
         // jwt.verify is synchronous; if verification fails, an error is thrown.
-        const decoded = jwt.verify(token, process.env.SECRET_KEY);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
         if (!decoded) {
             return res.status(401).json({
                 message: "Invalid token",

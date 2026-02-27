@@ -7,8 +7,12 @@ import WinnersForm from "./Form_Components/WinnersForm";
 import { Accordion, AccordionSummary, AccordionDetails, Box, Typography, Button, CircularProgress } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { debounce } from "lodash";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCurrentEventForm } from "../../../../features/eventSlice";
+import axios from "axios";
+import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
+import { API_ENDPOINTS } from "../../../../utils/api";
 
 const EventFormWrapper = () => {
   // Manage which accordion is expanded.
@@ -17,6 +21,7 @@ const EventFormWrapper = () => {
   const [finalSubmitAttempted, setFinalSubmitAttempted] = useState(false);
   // Local saving/loading state for autosave feedback.
   const [saving, setSaving] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   // Refs for child components.
   const basicRef = useRef();
@@ -26,6 +31,8 @@ const EventFormWrapper = () => {
   const containerRef = useRef();
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.auth.user);
 
   // Helper function that aggregates data from all child components.
   const aggregateData = () => ({
@@ -66,7 +73,7 @@ const EventFormWrapper = () => {
   }, [dispatch]);
 
   // Final submission handler.
-  const handleSubmitClick = (e) => {
+  const handleSubmitClick = async (e) => {
     e.preventDefault();
     setFinalSubmitAttempted(true);
     const basicErrors = basicRef.current.validate();
@@ -81,15 +88,40 @@ const EventFormWrapper = () => {
       Object.keys(winnersErrors).length === 0
     ) {
       const aggregatedData = aggregateData();
-      dispatch(setCurrentEventForm(aggregatedData));
-      setSaving(true);
-      // Simulate a saving delay.
-      setTimeout(() => {
-        console.log("Submitting aggregated event data:", { ...aggregatedData });
-        setSaving(false);
-        // Optionally, navigate or show a success message.
-      }, 1000);
+      
+      // Prepare data for backend
+      const eventData = {
+        ...aggregatedData,
+        editedBy: user?._id || null,
+        uploadedBy: user?._id || null,
+      };
+
+      setSubmitting(true);
+      try {
+        const response = await axios.post(
+          API_ENDPOINTS.EVENT_REGISTER,
+          eventData,
+          {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true,
+          }
+        );
+
+        if (response.data.success) {
+          toast.success("Event created successfully!");
+          dispatch(setCurrentEventForm(null)); // Clear form
+          navigate(`/event/${response.data.data._id}`);
+        } else {
+          toast.error(response.data.message || "Failed to create event");
+        }
+      } catch (error) {
+        console.error("Error submitting event:", error);
+        toast.error(error.response?.data?.message || "Error creating event");
+      } finally {
+        setSubmitting(false);
+      }
     } else {
+      toast.error("Please fix all validation errors before submitting");
       if (Object.keys(basicErrors).length > 0) {
         setExpanded("basic");
       } else if (Object.keys(stakeholderErrors).length > 0) {
@@ -129,9 +161,10 @@ const EventFormWrapper = () => {
 
   return (
     <FormContainer title="Create Event">
-      {saving && (
-        <Box className="fixed top-4 right-4 z-[10000]">
+      {(saving || submitting) && (
+        <Box className="fixed top-4 right-4 z-[10000] bg-white p-2 rounded shadow-lg flex items-center gap-2">
           <CircularProgress size={24} />
+          <Typography variant="body2">{submitting ? "Submitting..." : "Saving..."}</Typography>
         </Box>
       )}
       <Box
@@ -226,11 +259,11 @@ const EventFormWrapper = () => {
         </Accordion>
 
         <div className="mt-6 flex justify-end gap-2">
-          <Button variant="contained" color="success" onClick={handleSaveEntireDocument}>
-            Save Event Data
+          <Button variant="contained" color="success" onClick={handleSaveEntireDocument} disabled={submitting}>
+            Save Draft
           </Button>
-          <Button variant="contained" onClick={handleSubmitClick}>
-            Submit Event
+          <Button variant="contained" onClick={handleSubmitClick} disabled={submitting}>
+            {submitting ? "Submitting..." : "Submit Event"}
           </Button>
         </div>
       </Box>

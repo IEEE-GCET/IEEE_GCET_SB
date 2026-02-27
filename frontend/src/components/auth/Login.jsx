@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { useNavigate } from "react-router-dom";
-import { toast } from "sonner"; // Import Toast
+import { useNavigate, Link } from "react-router-dom";
+import { toast } from "sonner";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
 import {
@@ -15,6 +15,7 @@ import {
 } from "../ui/select";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading, setUser } from "../../features/authSlice";
+import { API_ENDPOINTS } from "../../utils/api";
 
 function Login() {
   const dispatch = useDispatch();
@@ -53,7 +54,7 @@ function Login() {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/ieeegcetsb/user/login",
+        API_ENDPOINTS.USER_LOGIN,
         input,
         {
           headers: {
@@ -167,6 +168,16 @@ function Login() {
               Login
             </Button>
           )}
+        </div>
+
+        {/* Register Link */}
+        <div className="text-center">
+          <p className="text-sm text-gray-600">
+            Don't have an account?{" "}
+            <Link to="/register" className="text-blue-600 hover:underline font-medium">
+              Register here
+            </Link>
+          </p>
         </div>
       </form>
     </div>

@@ -19,20 +19,14 @@ export const userRegistration = async (req, res) => {
       society_members,
     } = req.body;
     console.log(req.body);
-    if (
-      !fullname ||
-      !email ||
-      !password ||
-      !role ||
-      !academics ||
-      !description ||
-      !societies_registered ||
-      !society_members
-    )
+    
+    // Only check required fields
+    if (!fullname || !email || !password || !role || !academics) {
       return res.status(400).json({
-        message: "Something is missing",
+        message: "Please fill all required fields",
         success: false,
       });
+    }
 
     let user = await User.findOne({ email });
     if (user) {
@@ -106,7 +100,7 @@ export const userLogin = async (req, res) => {
     user = await User.findById(tokenData.userId).populate("societies_registered");
 
     // Sign a short-lived access token (e.g., 15 minutes)
-    const accessToken = jwt.sign(tokenData, process.env.SECRET_KEY, {
+    const accessToken = jwt.sign(tokenData, process.env.JWT_SECRET, {
       expiresIn: "15m",
     });
     // Sign a longer-lived refresh token (e.g., 7 days)
@@ -178,7 +172,7 @@ export const sessionStatus = (req, res) => {
       });
     }
     // Synchronously verify the token. If it fails, jwt.verify will throw an error.
-    jwt.verify(token, process.env.SECRET_KEY);
+    jwt.verify(token, process.env.JWT_SECRET);
     return res.status(200).json({
       message: "Session active",
       success: true,
@@ -211,7 +205,7 @@ export const refreshToken = async (req, res) => {
         });
       }
       const tokenData = { userId: decoded.userId };
-      const newAccessToken = jwt.sign(tokenData, process.env.SECRET_KEY, {
+      const newAccessToken = jwt.sign(tokenData, process.env.JWT_SECRET, {
         expiresIn: "1d",
       });
       res.cookie("token", newAccessToken, {

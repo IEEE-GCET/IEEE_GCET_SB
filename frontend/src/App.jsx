@@ -18,6 +18,7 @@ import About from "./components/partials/About_components/About";
 import Societies from "./components/partials/Society_components/Societies";
 import Event from "./components/partials/Event_components/Event";
 import { Login } from "./components/auth/Login";
+import { Register } from "./components/auth/Register";
 import Layout from "./Layout";
 import EventViewCard from "./components/partials/Event_components/Event_view_components/EventViewCard";
 import EventFormWrapper from "./components/partials/Event_components/Event_form_components/EventFormWrapper";
@@ -41,6 +42,7 @@ const appRouter = createBrowserRouter(
       {/* Public Routes */}
       <Route index element={<Home />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
       <Route path="/about" element={<About />} />
       <Route path="/society" element={<Societies />} />
       <Route path="/event" element={<Event />} />
