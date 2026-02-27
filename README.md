@@ -75,14 +75,22 @@ npm install
 
 ## Running the Application
 
-### Start Backend Server
+### Quick Start (Windows)
+Simply double-click `startup.bat` - it will:
+- Start backend server (port 8000)
+- Start frontend server (port 5173)
+- Open website in your browser automatically
+
+### Manual Start
+
+**Start Backend Server:**
 ```bash
 cd backend
 npm run dev
 ```
 Backend will run on http://localhost:8000
 
-### Start Frontend Development Server
+**Start Frontend Development Server:**
 ```bash
 cd frontend
 npm run dev
